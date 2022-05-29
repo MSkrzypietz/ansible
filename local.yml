@@ -10,3 +10,4 @@
       - install
   tasks:
     - include: tasks/git-setup.yml
+    - include: tasks/zsh-setup.yml
