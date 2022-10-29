@@ -1,0 +1,14 @@
+- name: Install System Packages 1
+  become: true
+  apt:
+    name: ["build-essential"]
+  tags:
+    - install
+    - core
+- name: Install System Packages 2
+  become: true
+  apt:
+    name: ["i3"]
+  tags:
+    - install
+    - core
