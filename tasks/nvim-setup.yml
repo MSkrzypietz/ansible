@@ -1,0 +1,30 @@
+- name: Remove neovim
+  shell: "rm -rf {{ lookup('env', 'HOME') }}/neovim"
+  tags:
+    - install
+    - nvim
+- name: Get packer
+  ansible.builtin.git:
+    repo: 'https://github.com/wbthomason/packer.nvim'
+    dest: "{{ lookup('env', 'HOME') }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
+  tags:
+    - install
+    - nvim
+- name: Clone neovim
+  ansible.builtin.git:
+    repo: 'https://github.com/neovim/neovim.git'
+    dest: "{{ lookup('env', 'HOME') }}/neovim"
+  tags:
+    - install
+    - nvim
+- name: Build neovim
+  shell: "cd {{ lookup('env', 'HOME') }}/neovim && make -j 20"
+  tags:
+    - install
+    - nvim
+- name: Install neovim
+  shell: "cd {{ lookup('env', 'HOME') }}/neovim && make install"
+  become: true
+  tags:
+    - install
+    - nvim

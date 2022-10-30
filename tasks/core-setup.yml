@@ -1,14 +1,23 @@
 - name: Install System Packages 1
   become: true
   apt:
-    name: ["build-essential"]
+    name: ["build-essential", "cmake", "libtool", "libtool-bin", "ninja-build", "gettext", "autoconf", "g++", "pkg-config", "unzip", "curl", "doxygen"]
   tags:
     - install
     - core
+    - nvim
 - name: Install System Packages 2
   become: true
   apt:
-    name: ["curl", "i3"]
+    name: ["i3"]
   tags:
     - install
     - core
+- name: Install Clang
+  become: true
+  apt:
+    name: ["clang", "clangd", "clang-12", "clangd-12"]
+  tags:
+    - install
+    - core
+    - nvim
