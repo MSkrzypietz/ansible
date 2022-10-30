@@ -8,7 +8,7 @@
 - name: Install System Packages 2
   become: true
   apt:
-    name: ["i3"]
+    name: ["curl", "i3"]
   tags:
     - install
     - core

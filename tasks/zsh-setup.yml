@@ -3,7 +3,8 @@
   tags: 'install'
     
 - name: Change shell to zsh
-  shell: chsh -s $(which zsh)
+  shell: chsh michael -s $(which zsh)
+  become: true
   tags: 'install'
 
 - name: Check that the somefile.conf exists
@@ -13,7 +14,7 @@
   tags: 'install'
 
 - name: Oh-My-Zsh
-  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
+  shell: curl -L https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
   tags: 'install'
   when: oh_my_stats.stat.exists == False
   become_user: michael
